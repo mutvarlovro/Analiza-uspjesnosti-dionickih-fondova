@@ -1,0 +1,1585 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Analiza uspješnosti dioničkih fondova},
+  pdfauthor={Sap-projekt},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Analiza uspješnosti dioničkih fondova}
+\author{Sap-projekt}
+\date{17.01.2021.}
+
+\begin{document}
+\maketitle
+
+\hypertarget{analiza-uspjeux161nosti-dioniux10dkih-fondova}{%
+\section{Analiza uspješnosti dioničkih
+fondova}\label{analiza-uspjeux161nosti-dioniux10dkih-fondova}}
+
+\hypertarget{opis-projekta}{%
+\subsection{Opis projekta:}\label{opis-projekta}}
+
+Ovaj projekt obavezni je dio izbornog kolegija Statistička analiza
+podataka Fakulteta elektrotehnike i računarstva. Projekt je poslužio
+primjeni teorijskih temelja stečenih na predavanjima na skup podataka iz
+stvarnog svijeta. Kao pomoć u izradi projekta korišten je programski
+jezik R koji je pružio potporu za izvođenje testiranja i bolju
+vizualizaciju podataka.
+
+\hypertarget{opis-problema}{%
+\subsection{Opis problema:}\label{opis-problema}}
+
+Rezultati istraživanja provođenih zadnih nekoliko desetljeća upućuju na
+to da je gotovo nemoguće dugoročno i konzistentno ``pobijediti tržište''
+biranjem dionica u portfelju, u odnosu na dobro diverzificirani tržišni
+indeks. Cilj ovog projektnog zadatka je analizirati podatke o povratima
+i strukturi dioničkih fondova, te analizirati koliko su uspješni unutar
+svoje kategorije i u odnosu na tržište. Pritom je fokus ovog projekta
+isključivo na tzv. otvorene fondove (eng. mutual fund) koji ulažu u
+dionice i dostupni su malim investitorima.
+
+\hypertarget{skup-podataka}{%
+\subsection{Skup podataka:}\label{skup-podataka}}
+
+Korišteni skup podataka sastoji se od velikog broja dioničkih fondova i
+izraženi su u američkim dolarima. U daljnjem tekstu često će se
+pojavljivati izraz ``uspješnost fonda''. Kao ocjena uspješnosti fonda
+korišteni su srednji povrat fonda u razdoblju od deset godina i povrat
+fonda nakon od 10 godina. Iako je uspješnost moguće definirati na više
+načina, ovaj je odabran kao standardan način prilikom početka rada na
+projektu te je kao takav zadržan.
+
+\hypertarget{deskriptivna-statistika-skupa-podataka}{%
+\subsection{Deskriptivna statistika skupa
+podataka:}\label{deskriptivna-statistika-skupa-podataka}}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.0.4     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+Premda da imamo podatke i o srednjem prošlogodišnjem povratu te
+povratima za zadnjih 3 i 5 godina, povrati za 10 godina nam najbolje
+pokazuju koliko je određeni fond pouzdan/dobar/uspješan jer nam daju
+podatke kroz najduži period. Na sljedećem box plot dijagramu prikazani
+su srednji povrati za 3, 5 i 10 godina. \#Vidimo da su u prosjeku
+povrati za 10 godina najveći.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{success10 =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years}
+\NormalTok{success5 =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_5years}
+\NormalTok{success3 =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_3years}
+\KeywordTok{boxplot}\NormalTok{(success10, success5, success3, }\DataTypeTok{main=}\StringTok{"Fund mean annual return"}\NormalTok{, }
+        \DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"10 yrs"}\NormalTok{, }\StringTok{"5 yrs"}\NormalTok{, }\StringTok{"3 yrs"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"Percentage"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+Sljedeći dijagram prikazuje udjele određenih stilova investiranja
+fondova. U podatcima koje koristimo fondovi imaju 3 različita stila
+investiranja; Growth, Value i Blend. Growth fondovi ulažu u tvrtke za
+koje se očekuje da će brže rasti te su fondovi stoga riskantniji. Value
+fondovi pronalaze trenutno podcjenjene tvrtke te u njih ulažu. Value
+fondovi su po prirodi manje riskantni od growth fondova. Blend fondovi
+kombiniraju value i growth stilove investiranja.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{investment =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{investment[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{!=}\StringTok{ "<undefined>"}\NormalTok{]}
+\NormalTok{growth.number =}\StringTok{ }\KeywordTok{sum}\NormalTok{(investment }\OperatorTok{==}\StringTok{ "Growth"}\NormalTok{)}
+\NormalTok{value.number =}\StringTok{ }\KeywordTok{sum}\NormalTok{(investment }\OperatorTok{==}\StringTok{ "Value"}\NormalTok{)}
+\NormalTok{blend.number =}\StringTok{ }\KeywordTok{sum}\NormalTok{(investment }\OperatorTok{==}\StringTok{ "Blend"}\NormalTok{)}
+\NormalTok{values =}\StringTok{ }\KeywordTok{c}\NormalTok{(growth.number, value.number, blend.number)}
+\NormalTok{labels =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Growth"}\NormalTok{, }\StringTok{"Value"}\NormalTok{, }\StringTok{"Blend"}\NormalTok{)}
+\NormalTok{pct =}\StringTok{ }\KeywordTok{round}\NormalTok{(values}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(values)}\OperatorTok{*}\DecValTok{100}\NormalTok{, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{)}
+\NormalTok{labels =}\StringTok{ }\KeywordTok{paste}\NormalTok{(labels, pct)}
+\NormalTok{labels =}\StringTok{ }\KeywordTok{paste}\NormalTok{(labels,}\StringTok{"%"}\NormalTok{)}
+\KeywordTok{pie}\NormalTok{(values, }\DataTypeTok{labels=}\NormalTok{labels, }\DataTypeTok{col=}\KeywordTok{rainbow}\NormalTok{(}\KeywordTok{length}\NormalTok{(labels)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+Slijedeći dijagram prikazuje udjele imovine fonda u pojedinim sektorima.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{materials =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{basic_materials}
+\NormalTok{financial =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{financial_services}
+\NormalTok{cyclical =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{consumer_cyclical}
+\NormalTok{estate =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{real_estate}
+\NormalTok{defensive =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{consumer_defensive}
+\NormalTok{healthcare =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{healthcare}
+\NormalTok{utilities =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{utilities}
+\NormalTok{communication =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{communication_services}
+\NormalTok{energy =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{energy}
+\NormalTok{industrials =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{industrials}
+\NormalTok{technology =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{technology}
+\NormalTok{labels =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Basic materials"}\NormalTok{,}
+           \StringTok{"Financial services"}\NormalTok{,}
+           \StringTok{"Consumer cyclical"}\NormalTok{,}
+           \StringTok{"Real estate"}\NormalTok{,}
+           \StringTok{"Consumer defensive"}\NormalTok{,}
+           \StringTok{"Healthcare"}\NormalTok{,}
+           \StringTok{"Utilities"}\NormalTok{,}
+           \StringTok{"Communication services"}\NormalTok{,}
+           \StringTok{"Energy"}\NormalTok{,}
+           \StringTok{"Industrials"}\NormalTok{,}
+           \StringTok{"Technology"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(materials,}
+\NormalTok{        financial,}
+\NormalTok{        cyclical,}
+\NormalTok{        estate,}
+\NormalTok{        defensive,}
+\NormalTok{        healthcare,}
+\NormalTok{        utilities,}
+\NormalTok{        communication,}
+\NormalTok{        energy,}
+\NormalTok{        industrials,}
+\NormalTok{        technology,}
+        \DataTypeTok{names=}\NormalTok{labels,}
+        \DataTypeTok{ylab=}\StringTok{"Percentage"}\NormalTok{,}
+        \DataTypeTok{las =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\pagebreak
+
+\hypertarget{statistiux10dko-zakljuux10divanje}{%
+\section{Statističko
+zaključivanje:}\label{statistiux10dko-zakljuux10divanje}}
+
+Kao što je već spomenuto svaki fond ima određeni stil investiranja
+(Growth, Blend, Value). Zanima nas razlikuju li se uspješnosti fondova s
+obzirom na stil investiranja koji koriste, odnosno želimo provijeriti
+imaju li fodnovi s određenim stilom investiranja veće povrate nego
+ostali. Za početak želimo vidjeti ravnaju li se povrati svake od tih
+kategorija po normalnoj razdiobi kako bi mogli primjeniti analizu
+varijance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_blend <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Blend"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\KeywordTok{qqnorm}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{main=}\StringTok{"Srednji povrat za zadnjih 10 godina za Blend"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-5-1}
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-5-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_growth <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Growth"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\KeywordTok{qqnorm}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{main=}\StringTok{"Srednji povrat za zadnjih 10 godina za Growth"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-6-1}
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-6-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_value <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Value"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\KeywordTok{qqnorm}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{main=}\StringTok{"Srednji povrat za zadnjih 10 godina za Value"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-7-1}
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-7-2}
+
+Pretpostavke ANOVA testa su: populacije iz grupa međusobno su nezavisne
+i normalno distribuirane sa jednakim varijancama. Nezavisnost populacija
+teško možemo provjeriti stoga ćemo prepostaviti da su one nezavisne. Iz
+priloženih grafova možemo zaključiti da nema većih zakrivljenosti u
+podacima te stoga koristimo testove koji bi koristili kao i kada bi se
+podaci ravnali po normalnoj distribuciji.
+
+U nastavku vidimo da se varijance populacija razlikuju do na red
+veličine te možemo pretpostaviti da su varijance populacija približno
+jednake.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_growth_filtered <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\NormalTok{data_blend_filtered <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\NormalTok{data_value_filtered <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+
+\KeywordTok{var}\NormalTok{(data_growth_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.07227282
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{(data_blend_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.07808235
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{(data_value_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.04714453
+\end{verbatim}
+
+\pagebreak
+
+Prvo prikažimo pravokutni dijagram za te tri kategorije.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{!=}\StringTok{ "<undefined>"}\NormalTok{] }
+        \OperatorTok{~}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{investment[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{!=}\StringTok{ "<undefined>"}\NormalTok{],}
+        \DataTypeTok{ylab=} \StringTok{"srednji godišnji povrat"}\NormalTok{,}
+        \DataTypeTok{xlab=} \StringTok{"Stil investiranja"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+Vidimo da se sredine povrata kreću oko sličnih vrijednosti te stoga
+vrijedi tesirati potencijalnu jednakost tih sredina. Pretpostavljamo da
+su sredine te tri populacije jednake te uz gore navedene pretpostavke
+provodimo ANOVA test o jednakosti sredina. Nulta hipoteza je da su
+sredine te 3 kategorije jednake, a alternativna hipoteza je da se barem
+dvije sredine razlikuju.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res.aov <-}\StringTok{ }\KeywordTok{aov}\NormalTok{(fund_mean_annual_return_10years }\OperatorTok{~}\StringTok{ }\KeywordTok{factor}\NormalTok{(investment), }\DataTypeTok{data =}\NormalTok{ data)}
+\KeywordTok{summary}\NormalTok{(res.aov)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      Df Sum Sq Mean Sq F value Pr(>F)    
+## factor(investment)    3   30.0  10.013   148.4 <2e-16 ***
+## Residuals          6379  430.4   0.067                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 3 observations deleted due to missingness
+\end{verbatim}
+
+Iz rezultata anove definitivno možemo zaključiti da sredine tih uzoraka
+nisu jednake te odbacit nultu hipotezu u korist tvrdnje da su sredine
+različite. ANOVA nam samo govori da su sredine tih kategorija međusobno
+različite, no nas naravno zanima koja od te 3 kategorije ima najveći
+srednji povrat. Iz pravokutnog dijagrama se može vidjeti da kategorija
+Growth ima nešto veću sredinu nego ostale dvije kategorije te da Blend
+ima malo veću sredinu nego Value. Provodimo t-test kako bismo vidjeli
+ima li kategorija Growth veću sredinu od kategorije Blend. Pretpostavke
+t-testa su normalnost i nezavisnot podataka i one vrijede zbog početnih
+pretpostavki ANOVA testa.
+
+Prvo nas zanima jesu li varijance kategorija jednake,a da bismo to
+saznali provodimo test o jednakosti varijanci.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var.test}\NormalTok{(data_growth_filtered, data_blend_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  F test to compare two variances
+## 
+## data:  data_growth_filtered and data_blend_filtered
+## F = 0.9256, num df = 2821, denom df = 1802, p-value = 0.06864
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.8510221 1.0059219
+## sample estimates:
+## ratio of variances 
+##          0.9255974
+\end{verbatim}
+
+Vidimo da nam test daje p-vrijednost = 0.0686, što znači da na razini
+značajnosti 0.05 ne možemo odbaciti pretpostavku da su varijance
+jednake. Budući da smo dobili takvo riješenje, radimo t-test za dvije
+populacije koje imaju jednake varijance. Nulta hipoteza t-testa je da su
+srednji godišnji povrati tih dviju kategorija jednaki, a alternativna
+hipoteza je da populacija Growth ima veći povrat od populacije Blend.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, data_blend}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{alt =} \StringTok{"greater"}\NormalTok{, }\DataTypeTok{var.equal =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  data_growth$fund_mean_annual_return_10years and data_blend$fund_mean_annual_return_10years
+## t = 13.387, df = 4623, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  0.09664701        Inf
+## sample estimates:
+## mean of x mean of y 
+##  1.217055  1.106866
+\end{verbatim}
+
+Vidimo da je p-vrijednost provedenog testa izuzetno mala, što nam govori
+u prilog odbacivanja nulte hipoteze o jednakosti sredina. Možemo
+zaključiti da kategorija Growth ima veći povrat od kategorije Blend.
+
+\hypertarget{utjecaj-stila-investiranja-na-pe-ratio}{%
+\subsection{Utjecaj stila investiranja na P/E
+ratio}\label{utjecaj-stila-investiranja-na-pe-ratio}}
+
+Zanima nas utječe li stil investiranja na Price-to-Earnings ratio.
+Price-to-Earnings ratio je omjer trenutačne tržišne cijene i zarade po
+dionici tijekom protekle godine. Budući da stil investiranja Growth
+obilježava ulaganje u kompanije za koje se očekuje da će brže rasti, a
+stil investiranja Value ulaganje trenutno podcijenjene kompanije, za
+očekivati je da se njihov Price-to-Earnings ratio razlikuje.
+
+Iz priloženih grafova vidimo da se podaci za Blend stil investiranja
+bitno razlikuju od normalne razdiobe te nam to sugerira da je bolje
+napraviti neparametarsku alternativu ANOVA testa, a to je Kruskal-Wallis
+test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_blend <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Blend"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{price_earnings)}
+\KeywordTok{qqnorm}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{price_earnings, }\DataTypeTok{main=}\StringTok{"p/e ratio"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{price_earnings, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-13-1}
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-13-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_growth <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Growth"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{price_earnings)}
+\KeywordTok{qqnorm}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{price_earnings, }\DataTypeTok{main=}\StringTok{"p/e ratio"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_growth}\OperatorTok{$}\NormalTok{price_earnings, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-14-1}
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-14-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_value <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Value"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{price_earnings)}
+\KeywordTok{qqnorm}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{price_earnings, }\DataTypeTok{main=}\StringTok{"p/e ratio"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_value}\OperatorTok{$}\NormalTok{price_earnings, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-15-1}
+\includegraphics[width=0.5\linewidth]{projekt_files/figure-latex/unnamed-chunk-15-2}
+
+Uz pretpostavku jednakosti distribucija do na translaciju,
+Kruskal-Wallis test se može interpretirati kao test jednakosti sredina.
+Nulta hipoteza je da su sredine svih kategorija jednake, a alternativna
+hipoteza da se barem dvije sredine razlikuju.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(data}\OperatorTok{$}\NormalTok{price_earnings[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{!=}\StringTok{ "<undefined>"}\NormalTok{] }\OperatorTok{~}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{investment[data}\OperatorTok{$}\NormalTok{investment }\OperatorTok{!=}\StringTok{ "<undefined>"}\NormalTok{],}
+        \DataTypeTok{ylab=} \StringTok{"p/e ratio"}\NormalTok{,}
+        \DataTypeTok{xlab=} \StringTok{"Stil investiranja"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{kruskal.test}\NormalTok{(data}\OperatorTok{$}\NormalTok{price_earnings }\OperatorTok{~}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{investment, }\DataTypeTok{data =}\NormalTok{ data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  data$price_earnings by data$investment
+## Kruskal-Wallis chi-squared = 3253.2, df = 3, p-value < 2.2e-16
+\end{verbatim}
+
+Možemo vidjeti da nam Kruskal-Wallis ovdje sugerira da možemo odbaciti
+nultu hipotezu da su sredine jednake jer je p-vrijednost izuzetno mala.
+Sada kada znamo da nemaju sve kategorije jednak srednji P/E ratio, može
+nas zanimati koja koategorija ima najmanji P/E ratio. Zanima nas imaju
+li fondovi sa stilom investiranja Value manji P/E ratio nego oni sa
+Blend stilom investiranja. Budući da se razdiobe podataka razlikuju od
+normalne, koristit ćemo neparametarsku alternativu T-testa,
+Mann-Whitney-Willcoxonov test. Mann-Whitney-Willcoxonov test se uz
+pretpostavku da su uzorci iz istih distribucija, svodi na test
+jednakosti sredina. Nulta hipoteza nam je da su sredine jednake, a
+alternativa da se razlikuju.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res <-}\StringTok{ }\KeywordTok{wilcox.test}\NormalTok{(data_blend}\OperatorTok{$}\NormalTok{price_earnings, data_value}\OperatorTok{$}\NormalTok{price_earnings)}
+\NormalTok{res}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  data_blend$price_earnings and data_value$price_earnings
+## W = 2285158, p-value < 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+Mann-Whitney-Willcoxonov test daje nam izuzetno malo vrijednost iz čega
+možemo zaključiti da se srednji P/E ratio za dvije promatrane grupe
+razlikuje, odnosno da kategorija Value ima manji P/E ratio od kategorije
+Blend.
+
+\hypertarget{uspjeux161nost-fonda-s-obzirom-na-kategoriju}{%
+\subsection{Uspješnost fonda s obzirom na
+kategoriju}\label{uspjeux161nost-fonda-s-obzirom-na-kategoriju}}
+
+Zanimljivo je promatrati razlikuje li se uspješnost fonda s obzirom na
+kategoriju. Budući da u našim podatcima ima oko 50 različitih
+kategorija, nema smisla provoditi anovu. Najzanimljivije bi bilo
+promatrati one kategorije kojima najviše fondova pripada jer one
+vjerojatno prikazuju najrealniju sliku. Najviše fondova pripada u
+kategorije Large Blend, Large Value, Large Growth, Small Blend, Small
+Value, Small Growth koje većinom imaju istoimeni stil; Blend, Growth,
+Value. Utjecaj stila investiranja na uspješnost fonda smo već proučavali
+pa ćemo ovdje uzeti neke druge kategorije koje se čine zanimljive i lako
+razumljive, a pripada im puno fondova.To su World Large Stock,
+Technology i Real Estate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#data_cat <- data$category}
+\CommentTok{#as.data.frame(table(data_cat))}
+
+\NormalTok{filtered_by_categories <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{category }\OperatorTok{==}\StringTok{ "World Large Stock"} \OperatorTok{|}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{category }\OperatorTok{==}\StringTok{ "Technology"} \OperatorTok{|}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{category }\OperatorTok{==}\StringTok{ "Real Estate"}\NormalTok{,]}
+
+\KeywordTok{boxplot}\NormalTok{(filtered_by_categories}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years }\OperatorTok{~}\StringTok{ }\NormalTok{filtered_by_categories}\OperatorTok{$}\NormalTok{category,}
+        \DataTypeTok{ylab =} \StringTok{"srednji godišnji povrat"}\NormalTok{,}
+        \DataTypeTok{xlab =} \StringTok{"kategorije"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_re <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{category }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Real Estate"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_re}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(data_re}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{main=}\StringTok{"srednji godišnji povrat 10 godina"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_re}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-19-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_tech <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{category }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Technology"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_tech}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-19-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(data_tech}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{main=}\StringTok{"srednji godišnji povrat 10 godina"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_tech}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-19-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_wls <-}\StringTok{ }\NormalTok{data[data}\OperatorTok{$}\NormalTok{category }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"World Large Stock"}\NormalTok{),]}
+\KeywordTok{hist}\NormalTok{(data_wls}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-19-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(data_wls}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{main=}\StringTok{"srednji godišnji povrat 10 godina"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(data_wls}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-19-6.pdf}
+
+Iz priloženih grafova možemo pretpostaviti da podatci ne odskaču
+drastično od normalne distribucije. Uz pretpostavku nezavisnosti
+podataka, normalnosti te jednakosti varijanci, možemo provesti ANOVA
+test. Nulta hipoteza je da su srednji godišnji povrati jednaki u sve tri
+kategorije, a alternativna da se barem dva razlikuju.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_re_filtered <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data_re}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\NormalTok{data_tech_filtered <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data_tech}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+\NormalTok{data_wls_filtered <-}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data_wls}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years)}
+
+\KeywordTok{var}\NormalTok{(data_re_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02335224
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{(data_tech_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.09662187
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var}\NormalTok{(data_wls_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02697088
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res.aov <-}\StringTok{ }\KeywordTok{aov}\NormalTok{(fund_mean_annual_return_10years }\OperatorTok{~}\StringTok{ }\KeywordTok{factor}\NormalTok{(category), }\DataTypeTok{data =}\NormalTok{ filtered_by_categories)}
+\KeywordTok{summary}\NormalTok{(res.aov)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Df Sum Sq Mean Sq F value Pr(>F)    
+## factor(category)   2  30.13  15.065   393.2 <2e-16 ***
+## Residuals        585  22.41   0.038                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+ANOVA nam govori u prilog alternativne hipoteze, a to je da su sredine
+barem dvije of te tri kategorije različite. Iz pravokutnog dijagrama se
+vidi da su sredine kategorija Real Estate i Technology iznad sredine od
+World Large Stock, stoga ćemo uz pomoć t-testa provjeriti imaju li Real
+Estate i Technology jednake srednje povrate. Iako smo anovu radili pod
+pretpostavkom da su varijance jednake za t-test ćemo testirat jesu li
+varijance za dvije promatrane skupine jednake kako bi rezultat bio
+pouzdaniji.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var.test}\NormalTok{(data_re_filtered, data_tech_filtered)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  F test to compare two variances
+## 
+## data:  data_re_filtered and data_tech_filtered
+## F = 0.24169, num df = 149, denom df = 103, p-value = 4.167e-15
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.1681521 0.3433157
+## sample estimates:
+## ratio of variances 
+##          0.2416869
+\end{verbatim}
+
+Test o jednakosti varijanci odbacuje da su varijance jednake stoga
+provodimo t-test za nezavisne uzorke za populacije s različitim
+varijancama.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(data_tech}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, data_re}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, }\DataTypeTok{alt =} \StringTok{"greater"}\NormalTok{, }\DataTypeTok{var.equal =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  data_tech$fund_mean_annual_return_10years and data_re$fund_mean_annual_return_10years
+## t = 1.3054, df = 137.74, p-value = 0.09697
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  -0.0115471        Inf
+## sample estimates:
+## mean of x mean of y 
+##  1.519327  1.476333
+\end{verbatim}
+
+T-test nam vraća p-vrijednost = 0,09697 što znači da ne možemo na razini
+pouzdanosti 0.05 odbaciti nultu hipotezu da su sredine te dvije skupine
+jednake.Ne možemo zaključiti da neka od ovih dvije kategorija garantira
+prosječno veći povrat.
+
+\hypertarget{utjecaj-tehnologije-na-uspjeux161nosti-fonda}{%
+\subsection{Utjecaj tehnologije na uspješnosti
+fonda}\label{utjecaj-tehnologije-na-uspjeux161nosti-fonda}}
+
+Testira se postoji li linearna zavisnost između udjela ulaganja u
+tehnologiju i uspješnosti fonda.
+
+H0: fondovi imaju jednaku uspješnost bez obzira na udio koji ulažu u
+tehnologiju H1: fondovi imaju veću uspješnost ako imaju veći udio
+ulaganja u tehnologiju
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{uspjesnost =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years}
+\NormalTok{udio_tech =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{technology}
+\NormalTok{model =}\StringTok{ }\KeywordTok{lm}\NormalTok{(uspjesnost}\OperatorTok{~}\NormalTok{udio_tech)}
+\KeywordTok{plot}\NormalTok{(udio_tech, uspjesnost)}
+\KeywordTok{abline}\NormalTok{(model, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = uspjesnost ~ udio_tech)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.77966 -0.11453  0.04423  0.14796  0.76034 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 0.9996566  0.0054782   182.5   <2e-16 ***
+## udio_tech   0.0078387  0.0002382    32.9   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2484 on 6381 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.1451, Adjusted R-squared:  0.1449 
+## F-statistic:  1083 on 1 and 6381 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Postoji indicija da je zavisnost prisutna, ali potrebno je dodatno
+provjeriti normalnost te napraviti analizu reziduala.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{fitted}\NormalTok{(model), }\KeywordTok{resid}\NormalTok{(model))}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-24-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\StringTok{"Pearson: "}\NormalTok{, }\KeywordTok{cor}\NormalTok{(udio_tech, uspjesnost, }\DataTypeTok{method =} \StringTok{"pearson"}\NormalTok{, }\DataTypeTok{use =} \StringTok{"complete.obs"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pearson: "         "0.380871018407125"
+\end{verbatim}
+
+Iako QQ-plot ukazuje na to da su podaci iz normalne distribucije te
+reziduali ne pokazuju neki očit uzorak, Pearsonov koeficijent koji je
+dodatno izračunat ne ukazuje na visok stupanj zavisnosti između udjela
+ulaganja u tehnologiju i uspješnosti fonda.
+
+Ispituje se postoji li linearna zavisnost između cijene i uspješnosti
+fonda.
+
+H0: ne postoji linearna zavisnost između cijene i uspješnosti fonda H1:
+postoji linearna zavisnost cijene i uspješnosti fonda
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{uspjesnost =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years}
+\NormalTok{cijena =}\StringTok{ }\NormalTok{data}\OperatorTok{$}\NormalTok{net_annual_expense_ratio_fund}
+\NormalTok{model =}\StringTok{ }\KeywordTok{lm}\NormalTok{(uspjesnost}\OperatorTok{~}\NormalTok{cijena)}
+\KeywordTok{plot}\NormalTok{(cijena, uspjesnost)}
+\KeywordTok{abline}\NormalTok{(model, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = uspjesnost ~ cijena)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.62686 -0.12138  0.03087  0.15789  0.92020 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.323824   0.007813  169.43   <2e-16 ***
+## cijena      -0.149052   0.006041  -24.68   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2567 on 6381 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.08711,    Adjusted R-squared:  0.08696 
+## F-statistic: 608.9 on 1 and 6381 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Potrebno je provjeriti normalnost podataka te napraviti analizu
+reziduala.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{fitted}\NormalTok{(model), }\KeywordTok{resid}\NormalTok{(model))}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-26-2.pdf}
+Analiza reziduala pokazuje visoku grupiranost te se podaci ne mogu
+koristiti za linearnu regresiju.
+
+H0: razlika je jednaka za skuplje i jeftinije fondove H1: razlika je
+manja za skuplje fondove
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data1 =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years, data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_5years, data}\OperatorTok{$}\NormalTok{fund_mean_annual_return_3years)}
+\NormalTok{data2 =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(data}\OperatorTok{$}\NormalTok{net_annual_expense_ratio_fund)}
+\NormalTok{data2}\OperatorTok{$}\NormalTok{Min <-}\KeywordTok{apply}\NormalTok{(data1,}\DecValTok{1}\NormalTok{,}\DataTypeTok{FUN=}\NormalTok{min)}
+\NormalTok{data2}\OperatorTok{$}\NormalTok{Max <-}\KeywordTok{apply}\NormalTok{(data1,}\DecValTok{1}\NormalTok{,}\DataTypeTok{FUN=}\NormalTok{max)}
+\NormalTok{diff =}\StringTok{ }\NormalTok{data2}\OperatorTok{$}\NormalTok{Max }\OperatorTok{-}\StringTok{ }\NormalTok{data2}\OperatorTok{$}\NormalTok{Min}
+\NormalTok{model =}\StringTok{ }\KeywordTok{lm}\NormalTok{(diff }\OperatorTok{~}\StringTok{ }\NormalTok{data2}\OperatorTok{$}\NormalTok{data.net_annual_expense_ratio_fund)}
+\KeywordTok{plot}\NormalTok{(data2}\OperatorTok{$}\NormalTok{data.net_annual_expense_ratio_fund, diff)}
+\KeywordTok{abline}\NormalTok{(model, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-27-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{fitted}\NormalTok{(model), }\KeywordTok{resid}\NormalTok{(model))}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-27-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = diff ~ data2$data.net_annual_expense_ratio_fund)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.60833 -0.13780 -0.02247  0.11160  1.57705 
+## 
+## Coefficients:
+##                                          Estimate Std. Error t value Pr(>|t|)
+## (Intercept)                              0.514684   0.005893  87.338   <2e-16
+## data2$data.net_annual_expense_ratio_fund 0.042665   0.004556   9.365   <2e-16
+##                                             
+## (Intercept)                              ***
+## data2$data.net_annual_expense_ratio_fund ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1936 on 6381 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.01356,    Adjusted R-squared:  0.0134 
+## F-statistic:  87.7 on 1 and 6381 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqplot}\NormalTok{(data2}\OperatorTok{$}\NormalTok{data.net_annual_expense_ratio_fund, diff)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-27-4.pdf}
+
+H0: fondovi imaju jednaku uspješnost bez obzira na udio koji ulažu u
+tehnologiju H1: fondovi imaju veću uspješnost ako imaju veći udio
+ulaganja u tehnologiju
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data1 =}\StringTok{ }\KeywordTok{subset}\NormalTok{(data, technology }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\NormalTok{uspjesnost =}\StringTok{ }\NormalTok{data1}\OperatorTok{$}\NormalTok{fund_mean_annual_return_10years}
+\NormalTok{udio_tech =}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(data1}\OperatorTok{$}\NormalTok{technology)}
+\NormalTok{model =}\StringTok{ }\KeywordTok{lm}\NormalTok{(uspjesnost}\OperatorTok{~}\NormalTok{udio_tech)}
+\KeywordTok{plot}\NormalTok{(udio_tech, uspjesnost)}
+\KeywordTok{abline}\NormalTok{(model, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(model))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-28-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = uspjesnost ~ udio_tech)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.29455 -0.11198  0.03838  0.14063  0.83113 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 0.883469   0.009609   91.94   <2e-16 ***
+## udio_tech   0.064626   0.002149   30.07   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2305 on 6043 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.1302, Adjusted R-squared:   0.13 
+## F-statistic: 904.3 on 1 and 6043 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Provjeravamo linearnu zavisnost veličine imovine upravljanja fonda i
+povrata.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fondovi.data =}\StringTok{ }\NormalTok{data[,}\KeywordTok{c}\NormalTok{(}\StringTok{"net_assets"}\NormalTok{,}\StringTok{"fund_mean_annual_return_10years"}\NormalTok{)]}
+\KeywordTok{colnames}\NormalTok{(fondovi.data) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"velicina"}\NormalTok{, }\StringTok{"povrat"}\NormalTok{)}
+\NormalTok{fondovi.data =}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(fondovi.data)}
+
+\NormalTok{log_velicina =}\StringTok{ }\KeywordTok{log}\NormalTok{(fondovi.data}\OperatorTok{$}\NormalTok{velicina)}
+
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{log}\NormalTok{(fondovi.data}\OperatorTok{$}\NormalTok{velicina), fondovi.data}\OperatorTok{$}\NormalTok{povrat)}
+
+\NormalTok{fit.velicine =}\StringTok{ }\KeywordTok{lm}\NormalTok{(fondovi.data}\OperatorTok{$}\NormalTok{povrat}\OperatorTok{~}\NormalTok{log_velicina)}
+
+\KeywordTok{abline}\NormalTok{(fit.velicine)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fit.velicine)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = fondovi.data$povrat ~ log_velicina)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.83026 -0.12369  0.04054  0.16779  0.74719 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  0.352773   0.036848   9.574   <2e-16 ***
+## log_velicina 0.038969   0.001798  21.670   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2592 on 6380 degrees of freedom
+## Multiple R-squared:  0.06856,    Adjusted R-squared:  0.06841 
+## F-statistic: 469.6 on 1 and 6380 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Vidimo da naš model objašnjava oko 7\% ukupne varijance u povratu. //
+provjeriti recenicu
+
+U nastavku prikazujemo Q-Q plot i graf reziduala
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(fit.velicine))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(fit.velicine))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{fitted}\NormalTok{(fit.velicine), }\KeywordTok{resid}\NormalTok{(fit.velicine))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-30-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{matrix_coef <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(fit.velicine)}\OperatorTok{$}\NormalTok{coefficients  }
+\NormalTok{my_estimates <-}\StringTok{ }\NormalTok{matrix_coef[ , }\DecValTok{1}\NormalTok{]                   }
+\NormalTok{my_estimates }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  (Intercept) log_velicina 
+##   0.35277292   0.03896851
+\end{verbatim}
+
+S ovim podacima linearne regresije možemo zaključiti da za svako
+povećanje od 2.917 * 10**7 USD imovine za upravljanje nekog fonda njegov
+povrat se poveća za 0.1\%. // provjeriti rečenicu
+
+Analiziraju se dividende ovisno o stilu investiranja fonda.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{returnsComplete =}\StringTok{ }\NormalTok{funds[}\KeywordTok{complete.cases}\NormalTok{(funds[,}\KeywordTok{c}\NormalTok{(}\StringTok{"fund_return_10years"}\NormalTok{,}\StringTok{"category_return_10years"}\NormalTok{,}\StringTok{"fund_sharpe_ratio_10years"}\NormalTok{,}\StringTok{"category_sharpe_ratio_10years"}\NormalTok{,}\StringTok{"years_up"}\NormalTok{,}\StringTok{"years_down"}\NormalTok{)]),]}
+
+\NormalTok{growthFunds =}\StringTok{ }\NormalTok{funds[funds}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ "Growth"}\NormalTok{,]}
+\NormalTok{valueFunds =}\StringTok{ }\NormalTok{funds[funds}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ "Value"}\NormalTok{,]}
+\NormalTok{blendFunds =}\StringTok{ }\NormalTok{funds[funds}\OperatorTok{$}\NormalTok{investment }\OperatorTok{==}\StringTok{ "Blend"}\NormalTok{,]}
+
+\KeywordTok{boxplot}\NormalTok{(growthFunds}\OperatorTok{$}\NormalTok{fund_yield,}
+\NormalTok{        valueFunds}\OperatorTok{$}\NormalTok{fund_yield,}
+\NormalTok{        blendFunds}\OperatorTok{$}\NormalTok{fund_yield, }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Growth"}\NormalTok{,}\StringTok{"Value"}\NormalTok{,}\StringTok{"Blend"}\NormalTok{), }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"Red"}\NormalTok{, }\StringTok{"Light green"}\NormalTok{, }\StringTok{"Light blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-33-1.pdf}
+
+Box plot dividendi po stilu investiranja ukazuje na veliku zakrivljenost
+kod dividendi Growth fondova. Zbog te činjenice ne možemo koristiti
+testove koji se oslanjaju na pretpostavku normalnosti. Za analizu
+jednakosti sredina koristit ćemo Kruskal-Wallisov test umjesto ANOVA
+testa. Dodatno testiramo razliku dividendi između Value i Blend fondova.
+Prije samog testiranja razlike provodimo Kolmogorov-Smirnovljev test
+kako bismo utvrdili možemo li za testiranje razlike koristiti t-test ili
+moramo koristiti neki od neparametarskih testova. Tvrdnja koju testiramo
+je jesu li dividende value fondova veće od dividendi blend fondova
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{kruskal.test}\NormalTok{(funds}\OperatorTok{$}\NormalTok{fund_yield}\OperatorTok{~}\NormalTok{funds}\OperatorTok{$}\NormalTok{investment, }\DataTypeTok{data=}\NormalTok{funds);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  funds$fund_yield by funds$investment
+## Kruskal-Wallis chi-squared = 1853, df = 3, p-value < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#jedan od fondova ima različitu dividendu}
+
+\KeywordTok{shapiro.test}\NormalTok{(valueFunds}\OperatorTok{$}\NormalTok{fund_yield)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  valueFunds$fund_yield
+## W = 0.9045, p-value < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(blendFunds}\OperatorTok{$}\NormalTok{fund_yield)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  blendFunds$fund_yield
+## W = 0.8325, p-value < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{wilcox.test}\NormalTok{(valueFunds}\OperatorTok{$}\NormalTok{fund_yield, blendFunds}\OperatorTok{$}\NormalTok{fund_yield, }\DataTypeTok{paired =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{var.equal =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alternative =} \StringTok{"greater"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  valueFunds$fund_yield and blendFunds$fund_yield
+## W = 1916463, p-value < 2.2e-16
+## alternative hypothesis: true location shift is greater than 0
+\end{verbatim}
+
+Kolmogorov-Smirnovljev testovi ukauzju na činjenicu da fondovi nemaju
+normalnu razdiobu te se stoga koristi neparametarski Wilcoxonov test
+predznačenih rangova. Navedeni test daje zaključak da value fondovi
+imaju veće dividende od blend fondova.
+
+Za istraživanje tvrdnje da fondovi pobjeđuju svoje kategorije,
+analizirali smo povrate fondova i njihovih kategorija nakon 10 godina.
+Boxplot za povrate fondova i kategorija mogao bi ukazivati na činjenicu
+da su povrati fondova i kategorija jednaki s razlikom u većoj varijaciji
+kod fondova.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{returns_10years =}\StringTok{ }\NormalTok{funds[}\KeywordTok{c}\NormalTok{(}\StringTok{"fund_return_10years"}\NormalTok{,}\StringTok{"category_return_10years"}\NormalTok{)]}
+\NormalTok{ind =}\StringTok{ }\KeywordTok{which}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(returns_10years}\OperatorTok{$}\NormalTok{fund_return_10years) }\OperatorTok{&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(returns_10years}\OperatorTok{$}\NormalTok{category_return_10years))}
+\NormalTok{returns_10years =}\StringTok{ }\NormalTok{returns_10years[ind,]}
+
+\KeywordTok{boxplot}\NormalTok{(funds}\OperatorTok{$}\NormalTok{fund_return_10years, funds}\OperatorTok{$}\NormalTok{category_return_10years, }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Fund return"}\NormalTok{,}\StringTok{"Category return"}\NormalTok{), }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"light blue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-35-1.pdf}
+Analizom histograma povrata fondova i kategorija uočavaju se blage
+zakrivljenosti podataka, ali u histogramu razlike povrata fonda i
+povrata kategorije ne uočava se veća zakrivljenost podataka. Za analizu
+razlike sredina koristit ćemo upareni t-test jer svaki fond ima
+pridruženu odgovarajuću kategoriju. T-test je robustan na manje
+zakrivljenosti u podacima te je bolja opcija u odnosu na neparametarske
+testove (pretežno zbog svoje veličine) kod velikih uzoraka. Nulta
+hipoteza testa je da fondovi imaju manji ili jednak povrat od svojih
+kategorija. Alternativna hipoteza testa je da fondovi imaju veći povrat
+od svojih kategorija.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(returns_10years}\OperatorTok{$}\NormalTok{fund_return_10years, }\DataTypeTok{main=}\StringTok{"Fund return (10 years)"}
+\NormalTok{     ,}\DataTypeTok{col=}\StringTok{"cyan"}
+\NormalTok{     ,}\DataTypeTok{xlab =} \StringTok{"Fund return"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(returns_10years}\OperatorTok{$}\NormalTok{category_return_10years, }\DataTypeTok{main=}\StringTok{"Category return (10 years)"}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"Category return"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-36-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(returns_10years}\OperatorTok{$}\NormalTok{fund_return_10years }\OperatorTok{-}\StringTok{ }\NormalTok{returns_10years}\OperatorTok{$}\NormalTok{category_return_10years, }\DataTypeTok{main=}\StringTok{"Fund - category return (10 years)"}\NormalTok{, }\DataTypeTok{col=}\StringTok{"purple"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Fund - category return"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-36-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(}\StringTok{"Wilcoxonov test nad razlikom povrata fonda i povrata kategorije u razdoblju od 10 godina."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Wilcoxonov test nad razlikom povrata fonda i povrata kategorije u razdoblju od 10 godina."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ funds}\OperatorTok{$}\NormalTok{fund_return_10years, }
+            \DataTypeTok{y =}\NormalTok{ funds}\OperatorTok{$}\NormalTok{category_return_10years, }
+            \DataTypeTok{paired =} \OtherTok{TRUE}\NormalTok{,}
+            \DataTypeTok{alternative =} \StringTok{"greater"}\NormalTok{, }
+            \DataTypeTok{conf.level =} \FloatTok{0.99}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  funds$fund_return_10years and funds$category_return_10years
+## t = -8.8946, df = 6385, p-value = 1
+## alternative hypothesis: true difference in means is greater than 0
+## 99 percent confidence interval:
+##  -0.3032769        Inf
+## sample estimates:
+## mean of the differences 
+##              -0.2403883
+\end{verbatim}
+
+Zaključak testiranja je da ne možemo odbaciti tvrdnju da fondovi imaju
+manji ili jednak povrat od svojih kategorija, odnosno nismo uspijeli
+dokazati da fondovi imaju veći povrat od svojih kategorija.
+
+Linearnom regresijom provjerit će se ovisi li povrat fonda o povratu
+kategorije. Drugim riječima analizira se prate li fondovi svoje
+kategorije u smislu povrata.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{returnsComplete =}\StringTok{ }\NormalTok{funds[}\KeywordTok{complete.cases}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"fund_return_10years"}\NormalTok{,}\StringTok{"category_return_10years"}\NormalTok{)),]}
+\NormalTok{x =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{category_return_10years}
+\NormalTok{y =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{fund_return_10years}
+
+\NormalTok{fit.return =}\StringTok{ }\KeywordTok{lm}\NormalTok{(y}\OperatorTok{~}\NormalTok{x, }\DataTypeTok{data=}\NormalTok{returnsComplete)}
+\KeywordTok{plot}\NormalTok{(x, y, }\DataTypeTok{main =} \StringTok{"Category and fund returns regression"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Category return (10 years)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Fund return (10 years)"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(x, fit.return}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-37-1.pdf}
+Uočava se potencijalna zavisnost povrata fonda o povratu kategorije te
+je potrebno provesti analizu reziduala. Također će se odrediti Pearsonov
+koeficijent korelacije koji će predstalvljati jačinu linearne veze, kao
+i koeficijent determinacije koji određuje kvalitetu modela
+
+Analiza reziduala:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(fit.return))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(fit.return))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-38-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{fitted}\NormalTok{(fit.return), }\KeywordTok{resid}\NormalTok{(fit.return))}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-38-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#c("Koeficijent determinacije: ",rsq(x,y))}
+\KeywordTok{c}\NormalTok{(}\StringTok{"Pearsonov koeficijent korelacije:"}\NormalTok{, }\KeywordTok{cor}\NormalTok{(x,y,}\DataTypeTok{method=}\StringTok{"pearson"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pearsonov koeficijent korelacije:" "0.808657328513655"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fit.return)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y ~ x, data = returnsComplete)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -32.508  -0.923   0.189   1.223  10.870 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.157373   0.125952  -1.249    0.212    
+## x            0.993893   0.009049 109.831   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.16 on 6384 degrees of freedom
+## Multiple R-squared:  0.6539, Adjusted R-squared:  0.6539 
+## F-statistic: 1.206e+04 on 1 and 6384 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coefficients}\NormalTok{(fit.return)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept)           x 
+##  -0.1573729   0.9938934
+\end{verbatim}
+
+Pearsonov koeficijent i koeficijent determinacije ukazuju na jaku
+linearnu vezu između povrata kategorije i povrata fonda. Reziduali ne
+pokazuju nikakvu vezu što je nužno za provođenje zaključaka o linearnog
+regresiji. Zaključuje se da postoji jaka linearna veza između povrata
+fondova i povrata njihovih kategorija. Procjenjeni koeficijenti iznose:
+b1 = 0.993893 i b0 = -0.157373. Ovom regresijom ne možemo donositi
+zaključke pobjeđuje li fond svoju kategoriju, već samo donosimo
+zaključak da fondovi prate svoje kategorije u smislu povrata.
+
+Za provjere hipoteze o pobjeđivanju fondova analizirati će se zavisnost
+razlike povrata fonda i povrata kategorije o povratu kateogrije.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{returnsComplete =}\StringTok{ }\NormalTok{funds[}\KeywordTok{complete.cases}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"fund_return_10years"}\NormalTok{,}\StringTok{"category_return_10years"}\NormalTok{)),]}
+\NormalTok{x =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{category_return_10years}
+\NormalTok{y =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{fund_return_10years }\OperatorTok{-}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{category_return_10years}
+
+\NormalTok{fit.return =}\StringTok{ }\KeywordTok{lm}\NormalTok{(y}\OperatorTok{~}\NormalTok{x, }\DataTypeTok{data=}\NormalTok{returnsComplete)}
+\KeywordTok{plot}\NormalTok{(x, y, }\DataTypeTok{xlab=}\StringTok{"Category return (10 years)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Fund - category return (10 years)"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(x, fit.return}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-39-1.pdf}
+Uočava se vrlo slaba linearna zavisnost između razlike povrata fonda i
+kategorije te same kategorije.
+
+Analiza reziduala:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(fit.return))}
+\KeywordTok{qqline}\NormalTok{(}\KeywordTok{rstandard}\NormalTok{(fit.return))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{fitted}\NormalTok{(fit.return), }\KeywordTok{resid}\NormalTok{(fit.return))}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{projekt_files/figure-latex/unnamed-chunk-40-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#c("Koeficijent determinacije: ",rsq(x,y))}
+\KeywordTok{c}\NormalTok{(}\StringTok{"Pearsonov koeficijent korelacije:"}\NormalTok{, }\KeywordTok{cor}\NormalTok{(x,y,}\DataTypeTok{method=}\StringTok{"pearson"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pearsonov koeficijent korelacije:" "-0.00844555250251895"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fit.return)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y ~ x, data = returnsComplete)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -32.508  -0.923   0.189   1.223  10.870 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -0.157373   0.125952  -1.249    0.212
+## x           -0.006107   0.009049  -0.675    0.500
+## 
+## Residual standard error: 2.16 on 6384 degrees of freedom
+## Multiple R-squared:  7.133e-05,  Adjusted R-squared:  -8.53e-05 
+## F-statistic: 0.4554 on 1 and 6384 DF,  p-value: 0.4998
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coefficients}\NormalTok{(fit.return)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  (Intercept)            x 
+## -0.157372861 -0.006106648
+\end{verbatim}
+
+Pearsonov koeficijent korelacije te koeficijent determinacije svojim
+niskim vrijednostima ukazuju na gotovo nikakvu linearnu zavisnost između
+razlike povrata fonda i kategorije i povrata kategorije. Koeficijenti
+procijenjenog pravca su isto približno jednaki nuli što ukazuje na
+činjenicu da će razlika povrata fonda i kategorije unutar svake
+kategorije ravnomjerno varirati, neovisno o povratu kategorije.
+
+Višestrukom regresijom pokušati ćemo pronaći kauzalnu vezu između
+razlike povrata fonda i kategorije i drugih pokazatelja fonda. Parametri
+koji bi mogli utjecati na razliku povrata fonda i povrata kategorije su:
+ukupna imovina pod upravljanje (pretpostavljamo da fondovi s većom
+imovinom pod upravljanje imaju veći vjerojatnost pobijediti svoje
+kategorije), razlika godišnjeg troška upravljanja fonda i kategorije
+(fondovi koji uzimaju veći postotak za upravljanje fondom imaju veću
+vjerojatnost pobijediti svoju kategoiju), medijalna tržišna
+kapitalizacija (fondovi koji ulažu u tvrtke s većom tržišnom
+kapitalizacijom će vjerojatnije pobijediti svoje kategorije).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{returnsComplete =}\StringTok{ }\NormalTok{funds[}\KeywordTok{complete.cases}\NormalTok{(funds[,}\KeywordTok{c}\NormalTok{(}\StringTok{"fund_return_10years"}\NormalTok{,}\StringTok{"category_return_10years"}\NormalTok{,}\StringTok{"fund_sharpe_ratio_10years"}\NormalTok{,}\StringTok{"category_sharpe_ratio_10years"}\NormalTok{,}\StringTok{"years_up"}\NormalTok{,}\StringTok{"net_assets"}\NormalTok{)]),]}
+
+\NormalTok{x1 =}\StringTok{ }\KeywordTok{log}\NormalTok{(returnsComplete}\OperatorTok{$}\NormalTok{net_assets)}
+\NormalTok{x2 =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{net_annual_expense_ratio_fund }\OperatorTok{-}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{net_annual_expense_ratio_category}
+\NormalTok{x3 =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{median_market_cap}
+
+\KeywordTok{cor}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(x1,x2,x3))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            x1          x2          x3
+## x1  1.0000000 -0.29043724  0.18342861
+## x2 -0.2904372  1.00000000 -0.04490357
+## x3  0.1834286 -0.04490357  1.00000000
+\end{verbatim}
+
+Analiziranjem koreliranosti varijabli primjećuje se slaba koreliranost
+između varijabli
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y =}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{fund_return_10years }\OperatorTok{-}\StringTok{ }\NormalTok{returnsComplete}\OperatorTok{$}\NormalTok{category_return_10years}
+
+
+\NormalTok{fit.return =}\StringTok{ }\KeywordTok{lm}\NormalTok{(y}\OperatorTok{~}\NormalTok{x1 }\OperatorTok{+}\StringTok{ }\NormalTok{x2 }\OperatorTok{+}\StringTok{ }\NormalTok{x3, }\DataTypeTok{data=}\NormalTok{returnsComplete)}
+\KeywordTok{summary}\NormalTok{(fit.return)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y ~ x1 + x2 + x3, data = returnsComplete)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -29.6037  -0.8129   0.0828   0.9971  11.1332 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -6.845e+00  2.961e-01 -23.114  < 2e-16 ***
+## x1           3.311e-01  1.459e-02  22.695  < 2e-16 ***
+## x2          -1.162e+00  5.110e-02 -22.745  < 2e-16 ***
+## x3          -2.256e-06  6.608e-07  -3.413 0.000646 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.95 on 6066 degrees of freedom
+## Multiple R-squared:  0.1932, Adjusted R-squared:  0.1928 
+## F-statistic: 484.2 on 3 and 6066 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Uočava se vrlo slaba linearna zavisnost između razlike povrata fonda i
+kategorije te same samih parametara.
+
+\end{document}
